@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Жак-Ив Кусто</title>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header header__container">
+      <div class="header__logo button-opacity"></div>
+    </header>
+
+    <main class="content">
+      <section class="profile profile__container">
+        <div class="profile__avatar"></div>
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+          <button class="profile__edit-button button-opacity"></button>
+        </div>
+        <button class="profile__add-button button-opacity"></button>
+      </section>
+      <section class="form">
+        <div class="popup popup_opened">
+          <form class="popup__container">
+            <button class="popup__close-button button-opacity"></button>
+            <h2 class="popup__form-heading">Редактировать профиль</h2>
+            <input class="popup__text popup__text_type_name" type="text" placeholder="Жак-Ив Кусто">
+            <input class="popup__text popup__text_type_about" type="text" placeholder="Исследователь океана">
+            <button class="popup__save-button button-opacity" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="cards cards__section">
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/Тбилиси.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Тбилиси</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/мцхета.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Мцхета</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/самеба.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Храм Цминда Самеба</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/Метехи.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Метехи</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/ушгули.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Ушгули</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__image" style="background-image: url(./images/вардзия.jpg)"></div>
+          <div class="card__container">
+            <h3 class="card__heading">Вардзия</h3>
+            <button class="card__like card__like_active button-opacity"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <h4 class="footer__copyright">&copy; 2020 Mesto Georgia</h4>
+    </footer>
+  </div>
+  <script src="./blocks/scripts/script.js"></script>
+</body>
+
+</html>

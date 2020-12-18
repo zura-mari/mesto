@@ -1,0 +1,28 @@
+.popup__text {
+    width: 358px;
+    height: 27px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.popup__text::placeholder {
+    color: #000000;
+}
+
+.popup__text:focus {
+    outline-color: #2B7CFF;
+}
+
+.popup__text:last-of-type {
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__text {
+        max-width: 238px;
+    }
+}

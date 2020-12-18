@@ -1,0 +1,5 @@
+.card__image {
+    background-size: cover;
+    background-position: center;
+    min-height: 282px;
+}

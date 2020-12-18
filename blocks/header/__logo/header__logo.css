@@ -1,0 +1,20 @@
+.header__logo {
+    background-image: url('../../../images/logo.png');
+    background-position: center;
+    background-size: cover;
+    max-width: 142px;
+    min-height: 33px;
+    cursor: pointer;
+}
+
+.header__logo:hover {
+    background-image: url('../../../images/logoBlack.png');
+}
+
+@media screen and (max-width: 580px) {
+    .header__logo {
+        min-height: 24px;
+        max-width: 104px;
+        margin-left: 27px;
+    }
+}

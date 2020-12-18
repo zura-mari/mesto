@@ -1,0 +1,9 @@
+.card {
+    min-height: 361px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
