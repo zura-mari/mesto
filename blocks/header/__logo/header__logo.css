@@ -1,5 +1,5 @@
 .header__logo {
-    background-image: url('../../../images/logo.png');
+    background-image: url('../../../images/header-logo-white.svg');
     background-position: center;
     background-size: cover;
     max-width: 142px;
@@ -8,7 +8,7 @@
 }
 
 .header__logo:hover {
-    background-image: url('../../../images/logoBlack.png');
+    background-image: url('../../../images/header-logo-black.svg');
 }
 
 @media screen and (max-width: 580px) {

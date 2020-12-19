@@ -1,6 +1,7 @@
 .popup__text {
     width: 358px;
-    height: 27px;
+    padding: 0 0 13px;
+    margin: 48px 0 26px;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     box-sizing: border-box;
@@ -18,11 +19,18 @@
 }
 
 .popup__text:last-of-type {
-    margin-bottom: 25px;
+    margin: 0 0 44px;
 }
 
 @media screen and (max-width: 880px) {
     .popup__text {
         max-width: 238px;
+        margin: 75px 0 26px;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .popup__text:last-of-type {
+        margin: 0 0 41px;
     }
 }
