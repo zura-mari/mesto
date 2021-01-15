@@ -2,4 +2,5 @@
     background-size: cover;
     background-position: center;
     min-height: 282px;
+    cursor: pointer;
 }

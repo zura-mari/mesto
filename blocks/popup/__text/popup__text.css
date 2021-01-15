@@ -6,14 +6,13 @@
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-box-shadow: inset 0 0 0 1000px #fff;
+    box-shadow: inset 0 0 0 1000px #fff;
     background-color: transparent;
     font-size: 14px;
     line-height: 17px;
 }
 
-.popup__text::placeholder {
-    color: #000000;
-}
 
 .popup__text:focus {
     outline-color: #2B7CFF;

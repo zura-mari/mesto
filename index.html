@@ -26,64 +26,37 @@
       </section>
 
       <section class="cards" aria-label="карточки">
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/tbilisi.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Тбилиси</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/mckheta.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Мцхета</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/sameba.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Храм Цминда Самеба</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/metekhi.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Метехи</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/ushguli.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Ушгули</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__image" style="background-image: url(./images/vardzia.jpg)"></div>
-          <div class="card__container">
-            <h3 class="card__heading">Вардзия</h3>
-            <button class="card__like button-opacity" type="button"></button>
-          </div>
-        </article>
       </section>
 
       <section class="form">
         <div class="popup">
-          <form class="popup__container" name="form">
+          <form class="popup__container" name="profileForm">
             <button class="popup__close-button button-opacity" type="button"></button>
             <h2 class="popup__form-heading">Редактировать профиль</h2>
             <input class="popup__text popup__text_type_name" type="text" name="name" value="">
             <input class="popup__text popup__text_type_about" type="text" name="about" value="">
             <button class="popup__save-button button-opacity" type="submit">Сохранить</button>
           </form>
+        </div>
+
+        <div class="card__popup">
+          <form class="popup__container card__add-form" name="cardForm">
+            <button class="popup__close-button card__popup_close-button button-opacity" type="button"></button>
+            <h2 class="popup__form-heading">Новое место</h2>
+            <input class="popup__text popup__text_type_heading" placeholder="Название" type="text" name="heading"
+              value="">
+            <input class="popup__text popup__text_type_link" placeholder="Ссылка на картинку" type="text" name="link"
+              value="">
+            <button class="popup__save-button button-opacity" type="submit">Создать</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="image">
+        <div class="image__popup-container">
+          <div class="image__popup"></div>
+          <button class="image__popup_close-button button-opacity"></button>
+          <h3 class="image__heading"></h3>
         </div>
       </section>
     </main>
@@ -92,6 +65,18 @@
       <p class="footer__copyright">&copy; 2020 Mesto Georgia</p>
     </footer>
   </div>
+
+  <template class="card-template">
+    <article class="card">
+      <div class="card__image"></div>
+      <button class="card__dellete button-opacity"></button>
+      <div class="card__container">
+        <h3 class="card__heading"></h3>
+        <button class="card__like button-opacity" type="button"></button>
+      </div>
+    </article>
+  </template>
+
   <script src="./scripts/script.js"></script>
 </body>
 

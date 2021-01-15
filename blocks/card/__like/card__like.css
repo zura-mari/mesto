@@ -16,11 +16,11 @@
     opacity: .5;
 }
 
-.card__like:focus {
+/* .card__like:focus {
     background-image: url('../../../images/favorite-active.svg');
 }
 
 .card__like:active {
     background-image: url('../../../images/favorite-active.svg');
     opacity: 1;
-}
+} */
