@@ -31,7 +31,7 @@ const initialCards = [
     },
     {
         name: 'Храм Цминда Самеба',
-        link: 'http://rasfokus.ru/images/photos/medium/2a0aab1edf5e30fea57c468ed130482f.jpg'
+        link: 'https://www.happinessplunge.com/wp-content/uploads/2014/02/Sameba-Cathedral-.jpg'
     },
     {
         name: 'Метехи',
