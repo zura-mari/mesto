@@ -11,13 +11,13 @@ const addCardButton = profile.querySelector('.profile__add-button');
 const cards = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.card-template').content;
 const cardPopup = document.querySelector('.card-popup');
-const cardForm = cardPopup.querySelector('.card__add-form');
-const cardPopupCloseButton = cardPopup.querySelector('.card-popup_close-button');
+const cardForm = cardPopup.querySelector('.card-popup__form');
+const cardPopupCloseButton = cardPopup.querySelector('.card-popup__close-button');
 const cardHeading = cardPopup.querySelector('.popup__text_type_heading');
 const cardImageLink = cardPopup.querySelector('.popup__text_type_link');
 const image = document.querySelector('.image');
 const imagePopup = image.querySelector('.image__popup');
-const imagePopupCloseButton = image.querySelector('.image__popup_close-button');
+const imagePopupCloseButton = image.querySelector('.image__popup-close');
 const imagePopupHeading = image.querySelector('.image__heading');
 
 const initialCards = [
