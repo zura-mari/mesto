@@ -15,12 +15,12 @@
     top: -50px;
 }
 
-.image__popup_close-button:hover {
+.image__popup-close:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 880px) {
-    .image__popup_close-button {
+    .image__popup-close {
         width: 40px;
         height: 40px;
         left: 99%;
@@ -29,7 +29,7 @@
 }
 
 @media screen and (max-width: 333px) {
-    .image__popup_close-button {
+    .image__popup-close {
         left: 87%;
         top: -42px;
     }
