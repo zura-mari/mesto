@@ -24,6 +24,7 @@ const initialCards = [
     {
         name: 'Тбилиси',
         link: 'https://avatars.mds.yandex.net/get-zen_doc/1137439/pub_5b5f4e12d8372f00a9280dd1_5b5f5109d8824e00a9c24dca/scale_1200'
+
     },
     {
         name: 'Мцхета',
@@ -97,7 +98,6 @@ function setListeners(item) {
 //открытие попапа картинки
 function openPopupImage(evt) {
     const card = evt.target.closest('.card');
-
     imagePopup.style.backgroundImage = evt.target.style.backgroundImage;
     imagePopupHeading.textContent = card.querySelector('.card__heading').textContent;
     openPopup(image);
