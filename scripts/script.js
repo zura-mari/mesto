@@ -2,7 +2,7 @@ const profile = document.querySelector('.profile');
 const editInfoButton = profile.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const profileForm = popup.querySelector('.popup__container');
-const InfoPopupCloseButton = popup.querySelector('.popup__close-button');
+const infoPopupCloseButton = popup.querySelector('.popup__close-button');
 const nameInput = document.querySelector('.popup__text_type_name');
 const aboutInput = document.querySelector('.popup__text_type_about');
 const profileTitle = document.querySelector('.profile__title');
@@ -20,33 +20,6 @@ const imagePopup = image.querySelector('.image__popup');
 const imagePopupCloseButton = image.querySelector('.image__popup-close');
 const imagePopupHeading = image.querySelector('.image__heading');
 
-const initialCards = [
-    {
-        name: 'Тбилиси',
-        link: 'https://avatars.mds.yandex.net/get-zen_doc/1137439/pub_5b5f4e12d8372f00a9280dd1_5b5f5109d8824e00a9c24dca/scale_1200'
-
-    },
-    {
-        name: 'Мцхета',
-        link: 'https://i03.fotocdn.net/s123/78cbb85b138e1486/public_pin_l/2808522122.jpg'
-    },
-    {
-        name: 'Храм Цминда Самеба',
-        link: 'https://www.happinessplunge.com/wp-content/uploads/2014/02/Sameba-Cathedral-.jpg'
-    },
-    {
-        name: 'Метехи',
-        link: 'https://img.tourister.ru/files/2/1/4/8/4/7/8/2/clones/870_600_fixedwidth.jpg'
-    },
-    {
-        name: 'Ушгули',
-        link: 'https://a.d-cd.net/NCAAAgEIP2A-960.jpg'
-    },
-    {
-        name: 'Вардзия',
-        link: 'https://a.d-cd.net/XgAAAgBdZuA-1920.jpg'
-    }
-];
 
 //редактирование информации о пользователе.
 function formSubmitHandler(evt) {
@@ -66,45 +39,41 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
 
-
-function render() {
-    initialCards.reverse();
-    initialCards.forEach(createCard);
-}
+initialCards.forEach((cardElement) => {
+    renderCard(cardElement, cards);
+  });
 
 //добавляем карточки в index.html  
-function addCardInHtml(cardElement) {
-    cards.prepend(cardElement);
-}
+function renderCard(cardElement, cards) {
+    cards.prepend(createCard(cardElement));
+   }
 
 //создаем карточки из шаблона template
 function createCard(element) {
     const cardElement = cardTemplate.cloneNode(true);
-    cardElement.querySelector('.card__heading').textContent = element.name;
-    cardElement.querySelector('.card__image').style.backgroundImage = `url(${element.link})`;
+    const cardImage = cardElement.querySelector('.card__image');
+    const delleteButton = cardElement.querySelector('.card__dellete');
+    const likeButton = cardElement.querySelector('.card__like');
+    const cardTitle = cardElement.querySelector('.card__heading');
 
-    setListeners(cardElement);
+    cardImage.style.backgroundImage = `url(${element.link})`;
+    cardImage.addEventListener('click', (evt) => {
+                imagePopup.style.backgroundImage = evt.target.style.backgroundImage;
+                imagePopupHeading.textContent = element.name
+                openPopup(image);
+            });
+            
+    delleteButton.addEventListener('click', handleDeleteCard);
 
-    addCardInHtml(cardElement);
-};
+    likeButton.addEventListener('click', cardLike);
 
-//функции-обработчики
-function setListeners(item) {
-    item.querySelector('.card__image').addEventListener('click', openPopupImage);
-    item.querySelector('.card__dellete').addEventListener('click', cardDellete);
-    item.querySelector('.card__like').addEventListener('click', cardLike);
-};
+    cardTitle.textContent = element.name;
 
-//открытие попапа картинки
-function openPopupImage(evt) {
-    const card = evt.target.closest('.card');
-    imagePopup.style.backgroundImage = evt.target.style.backgroundImage;
-    imagePopupHeading.textContent = card.querySelector('.card__heading').textContent;
-    openPopup(image);
+    return cardElement;
 };
 
 // Удаление карточки
-function cardDellete(evt) {
+function handleDeleteCard(evt) {
     evt.target.closest('.card').remove();
 };
 
@@ -116,15 +85,16 @@ function cardLike(evt) {
 //Добавляем в массив новые свойство новыми значениями
 function cardFormSubmitHandler(evt) {
     evt.preventDefault();
+
     const newCardTitle = cardHeading.value;
     const newCardLink = cardImageLink.value;
     const newElement = {
         name: newCardTitle,
         link: newCardLink,
     };
-    createCard(newElement);
-    cardHeading.value = '';
-    cardImageLink.value = '';
+    
+    renderCard(newElement, cards);
+    cardForm.reset();
     closePopup(cardPopup);
 };
 
@@ -136,7 +106,7 @@ editInfoButton.addEventListener('click', () => {
 });
 
 //закрытие попапа профиля
-InfoPopupCloseButton.addEventListener('click', () => {
+infoPopupCloseButton.addEventListener('click', () => {
     closePopup(popup);
 });
 
@@ -160,46 +130,3 @@ cardPopupCloseButton.addEventListener('click', () => {
 imagePopupCloseButton.addEventListener('click', () => {
     closePopup(image);
 });
-
-render();
-
-//создаем карточки из элементов,названия и фотографий выводим из массива
-// function addCard(element) {
-//     const cardElement = cardTemplate.content.cloneNode(true);
-//     cardElement.querySelector('.card__heading').textContent = element.name;
-//     cardElement.querySelector('.card__image').style.backgroundImage = `url(${element.link})`;
-//     cardElement.querySelector('.card__image').addEventListener('click', (evt) => {
-//         imagePopup.style.backgroundImage = evt.target.style.backgroundImage;
-//         imagePopupHeading.textContent = element.name
-//         openPopup(image);
-//     });
-
-//     // Удаление карточки
-//     cardElement.querySelector('.card__dellete').addEventListener('click', (evt) => {
-//         const card = evt.target.closest('.card');
-//         card.remove();
-//     });
-
-//     //лайк карточек
-//     cardElement.querySelector('.card__like').addEventListener('click', (evt) => {
-//         evt.target.classList.toggle('card__like_active');
-//     });
-
-//     cards.prepend(cardElement);
-// };
-// initialCards.forEach(addCard);
-
-//Добавляем в массив новые свойство новыми значениями
-// cardForm.addEventListener('submit', (evt) => {
-//     evt.preventDefault();
-//     const newCardTitle = cardHeading.value;
-//     const newCardLink = cardImageLink.value;
-//     const newElement = {
-//         name: newCardTitle,
-//         link: newCardLink,
-//     };
-//     addCard(newElement);
-//     cardHeading.value = '';
-//     cardImageLink.value = '';
-//     closePopup(cardPopup);
-// });
