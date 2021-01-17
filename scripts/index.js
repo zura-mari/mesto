@@ -41,12 +41,12 @@ function closePopup(popup) {
 
 initialCards.forEach((cardElement) => {
     renderCard(cardElement, cards);
-  });
+});
 
 //добавляем карточки в index.html  
 function renderCard(cardElement, cards) {
     cards.prepend(createCard(cardElement));
-   }
+}
 
 //создаем карточки из шаблона template
 function createCard(element) {
@@ -57,15 +57,11 @@ function createCard(element) {
     const cardTitle = cardElement.querySelector('.card__heading');
 
     cardImage.style.backgroundImage = `url(${element.link})`;
-    cardImage.addEventListener('click', (evt) => {
-                imagePopup.style.backgroundImage = evt.target.style.backgroundImage;
-                imagePopupHeading.textContent = element.name
-                openPopup(image);
-            });
-            
+    cardImage.addEventListener('click', () => handlePreviewPicture(element));
+
     delleteButton.addEventListener('click', handleDeleteCard);
 
-    likeButton.addEventListener('click', cardLike);
+    likeButton.addEventListener('click', handleLikeButton);
 
     cardTitle.textContent = element.name;
 
@@ -78,8 +74,15 @@ function handleDeleteCard(evt) {
 };
 
 //лайк карточек
-function cardLike(evt) {
+function handleLikeButton(evt) {
     evt.target.classList.toggle('card__like_active');
+};
+
+//открытие картинки в большом размере(попап картинки)
+function handlePreviewPicture(element) {
+    imagePopup.style.backgroundImage = `url(${element.link})`;
+    imagePopupHeading.textContent = element.name;
+    openPopup(image);
 };
 
 //Добавляем в массив новые свойство новыми значениями
@@ -92,7 +95,7 @@ function cardFormSubmitHandler(evt) {
         name: newCardTitle,
         link: newCardLink,
     };
-    
+
     renderCard(newElement, cards);
     cardForm.reset();
     closePopup(cardPopup);
