@@ -10,7 +10,8 @@
     outline: none;
     position: absolute;
     padding: 0;
-    transform: translate(236px, -84px);
+    top: -50px;
+    right: -50px;
     cursor: pointer;
 }
 
@@ -20,8 +21,9 @@
 
 @media screen and (max-width: 880px) {
     .popup__close-button {
-        transform: translate(122px, -70px);
         width: 40px;
         height: 40px;
+        right: 0;
+        top: -50px;
     }
 }

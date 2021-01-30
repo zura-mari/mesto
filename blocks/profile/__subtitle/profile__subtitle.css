@@ -2,11 +2,12 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
-    margin: 0;
+    margin: 16px 0 0;
     grid-row: 2;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    width: 100%;
 }
 
 @media screen and (max-width: 880px) {
