@@ -24,7 +24,6 @@
 @import "../blocks/popup/__form-btn/_disabled/popup__form-btn_disabled.css";
 @import "../blocks/cards/cards.css";
 @import "../blocks/card/card.css";
-@import "../blocks/card/__add-form/card__add-form.css";
 @import "../blocks/card/__image/card__image.css";
 @import "../blocks/card/__delete/card__delete.css";
 @import "../blocks/card/__heading/card__heading.css";

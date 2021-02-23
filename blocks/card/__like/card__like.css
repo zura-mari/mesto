@@ -1,6 +1,6 @@
 .card__like {
     background-image: url('../../../images/favorite-disabled.svg');
-    background-size: cover;
+    background-size: 22px 19px;
     background-position-x: right;
     background-repeat: no-repeat;
     background-color: transparent;
