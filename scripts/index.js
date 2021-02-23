@@ -18,6 +18,7 @@ const addCardButton = profile.querySelector('.profile__add-button');
 const cards = document.querySelector('.cards');
 const cardPopup = document.querySelector('.popup_type_add-card');
 const cardForm = cardPopup.querySelector('.popup__form_type_add-card');
+const cardFormSubmitButton = cardPopup.querySelector('.popup__form-btn_type_add-card');
 const cardPopupCloseButton = cardPopup.querySelector('.popup__close-button_type_add-card');
 const cardHeading = cardPopup.querySelector('.popup__form-text_type_heading');
 const cardImageLink = cardPopup.querySelector('.popup__form-text_type_link');
@@ -94,10 +95,13 @@ formList.forEach((formElement) => {
 });
 
 function resetErrorMessage() {
+    cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
+
     const formInput = Array.from(document.querySelectorAll(formConfig.inputSelector));
     const errorElement = Array.from(document.querySelectorAll('.popup__form-text-error'));
+    
     formInput.forEach((inputElement) => {
-        inputElement.classList.remove(formConfig.inputErrorClass);
+        inputElement.classList.remove(formConfig.inputErrorClass); 
     })
 
     errorElement.forEach((element) => {
@@ -107,7 +111,6 @@ function resetErrorMessage() {
 
 //Добавляем в массив новые свойство новыми значениями
 function cardFormSubmitHandler(evt) {
-    cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
     evt.preventDefault();
 
     const newCardTitle = cardHeading.value;
