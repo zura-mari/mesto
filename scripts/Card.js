@@ -1,6 +1,7 @@
+import {openPopup} from '../scripts/utils.js';
+
 const image = document.querySelector('.popup_type_full-image');
 const imagePopup = document.querySelector('.popup__full-image');
-const imagePopupCloseButton = image.querySelector('.popup__close-button_type_full-image');
 const imagePopupHeading = image.querySelector('.popup__full-image-heading');
 
 
@@ -46,10 +47,6 @@ export default class Card {
         this._cardImage.addEventListener('click', () => {
             this._handlePreviewPicture();
         });
-
-        imagePopupCloseButton.addEventListener('click', () => {
-            this._handleClosePopup()
-        });
     }
 
     _handleDeleteCard = () => {
@@ -64,30 +61,6 @@ export default class Card {
         imagePopup.src = this._link;
         imagePopup.alt = this._name;
         imagePopupHeading.textContent = this._name;
-        this._handleOpenPopup();
+        openPopup(image);
     }
-
-    _handleOpenPopup = () => {
-        image.classList.add('popup_opened');
-        document.addEventListener('keydown', this._closePopupWithEsc);
-        document.addEventListener('mousedown', this._closePopupMousedown);
-    }
-
-    _handleClosePopup = () => {
-        image.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._closePopupWithEsc);
-        document.removeEventListener('mousedown', this._closePopupMousedown);
-    }
-
-    _closePopupWithEsc = (evt) => {
-        if (evt.key === "Escape") {
-            this._handleClosePopup(document.querySelector('.popup_opened'));
-        }
-    }
-
-    _closePopupMousedown = (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            this._handleClosePopup(evt.target);
-        }
-    };
 };

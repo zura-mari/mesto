@@ -4,6 +4,7 @@ export default class FormValidator {
         this._formElement = formElement;
     }
 
+    //сделаем кнопку активной или неактивной
     _toggleButtonState = () => {
         if (this._hasInvalidInput(this._inputList)) {
             this._buttonElement.classList.add(this._formConfig.inactiveButtonClass);
@@ -14,6 +15,7 @@ export default class FormValidator {
         }
     };
 
+    // добавляем класс с ошибкой
     _showInputError = (element, inputElement, errorMessage) => {
         this._errorElement = element.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.add(this._formConfig.inputErrorClass);
@@ -21,6 +23,7 @@ export default class FormValidator {
         this._errorElement.classList.add(this._formConfig.errorClass);
     };
 
+    //удаляем класс с ошибкой(Скрываем сообщение об ошибке)
     _hideInputError = (element, inputElement) => {
         this._errorElement = element.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(this._formConfig.inputErrorClass);
@@ -28,17 +31,37 @@ export default class FormValidator {
         this._errorElement.textContent = '';
     };
 
+    //проверяем валидность поля
     _checkInputValidity = (inputElement) => {
         if (!inputElement.validity.valid) {
+            // Если поле не проходит валидацию, покажем ошибку
             this._showInputError(this._formElement, inputElement, inputElement.validationMessage, this._formConfig);
         } else {
+            // Если проходит, скроем
             this._hideInputError(this._formElement, inputElement, this._formConfig);
         }
     };
 
+    //принимаем массив полей
     _hasInvalidInput = () => {
+        // проходим по этому массиву методом some
         return this._inputList.some((inputElement) => {
+            // Если поле не валидно, колбэк вернёт true
             return !inputElement.validity.valid;
+        })
+    };
+
+    //сбрасываем ошибки инпутов
+    resetErrorMessage = () => {
+        const formInput = Array.from(document.querySelectorAll(this._formConfig.inputSelector));
+        const errorElement = Array.from(document.querySelectorAll('.popup__form-text-error'));
+
+        formInput.forEach((inputElement) => {
+            inputElement.classList.remove(this._formConfig.inputErrorClass);
+        })
+
+        errorElement.forEach((element) => {
+            element.textContent = '';
         })
     };
 
@@ -55,6 +78,7 @@ export default class FormValidator {
         });
     };
 
+    //включаем валидацию формы.
     enableValidation = () => {
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
