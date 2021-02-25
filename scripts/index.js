@@ -34,6 +34,8 @@ const formConfig = {
     errorClass: 'popup__form-text-error_visible'
 };
 
+const formValidator = new FormValidator(formConfig);
+
 //редактирование информации о пользователе.
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -90,7 +92,6 @@ editInfoButton.addEventListener('click', () => {
     nameInput.value = profileTitle.textContent;
     aboutInput.value = profileSubtitle.textContent;
     openPopup(profilePopup);
-    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     formValidator.resetErrorMessage();
 });
 
@@ -109,7 +110,6 @@ cardForm.addEventListener('submit', handleCardFormSubmit);
 addCardButton.addEventListener('click', () => {
     cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
     openPopup(cardPopup);
-    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     formValidator.resetErrorMessage();
 });
 

@@ -2,7 +2,7 @@ export default class FormValidator {
     constructor(formConfig, formElement) {
         this._formConfig = formConfig;
         this._formElement = formElement;
-    }
+    };
 
     //сделаем кнопку активной или неактивной
     _toggleButtonState = () => {
@@ -80,6 +80,7 @@ export default class FormValidator {
 
     //включаем валидацию формы.
     enableValidation = () => {
+    
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
