@@ -34,9 +34,7 @@ const formConfig = {
     errorClass: 'popup__form-text-error_visible'
 };
 
-const formValidator = new FormValidator(formConfig);
-
-//редактирование информации о пользователе.
+//редактирование информации о пользователе.
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
@@ -65,7 +63,7 @@ const formList = Array.from(document.querySelectorAll(formConfig.formSelector));
 
 //применяем валидацию к каждой форме
 formList.forEach((item) => {
-
+    
     //создаем экземпляр класса FormValidator и передаем объект настроек с селекторами и классами формы и саму форму
     const formValidator = new FormValidator(formConfig, item);
     formValidator.enableValidation();
@@ -88,6 +86,7 @@ function handleCardFormSubmit(evt) {
 
 //открытие попапа редактирование профиля
 editInfoButton.addEventListener('click', () => {
+    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     profileFormSubmitButton.classList.remove(formConfig.inactiveButtonClass);
     nameInput.value = profileTitle.textContent;
     aboutInput.value = profileSubtitle.textContent;
@@ -108,6 +107,7 @@ cardForm.addEventListener('submit', handleCardFormSubmit);
 
 //открытие попапа добавление карточки
 addCardButton.addEventListener('click', () => {
+    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
     openPopup(cardPopup);
     formValidator.resetErrorMessage();
