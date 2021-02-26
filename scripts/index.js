@@ -34,6 +34,9 @@ const formConfig = {
     errorClass: 'popup__form-text-error_visible'
 };
 
+const cardFormValidator = new FormValidator(formConfig, cardForm);
+const profileFormValidator = new FormValidator(formConfig, profileForm);
+
 //редактирование информации о пользователе.
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -58,17 +61,6 @@ function renderCard(cardElement, cards) {
     cards.prepend(createCard(cardElement));
 }
 
-//находим форму
-const formList = Array.from(document.querySelectorAll(formConfig.formSelector));
-
-//применяем валидацию к каждой форме
-formList.forEach((item) => {
-    
-    //создаем экземпляр класса FormValidator и передаем объект настроек с селекторами и классами формы и саму форму
-    const formValidator = new FormValidator(formConfig, item);
-    formValidator.enableValidation();
-});
-
 //Добавляем в массив новые свойство новыми значениями
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
@@ -86,12 +78,11 @@ function handleCardFormSubmit(evt) {
 
 //открытие попапа редактирование профиля
 editInfoButton.addEventListener('click', () => {
-    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     profileFormSubmitButton.classList.remove(formConfig.inactiveButtonClass);
     nameInput.value = profileTitle.textContent;
     aboutInput.value = profileSubtitle.textContent;
     openPopup(profilePopup);
-    formValidator.resetErrorMessage();
+    cardFormValidator.resetErrorMessage();
 });
 
 //закрытие попапа профиля
@@ -107,10 +98,9 @@ cardForm.addEventListener('submit', handleCardFormSubmit);
 
 //открытие попапа добавление карточки
 addCardButton.addEventListener('click', () => {
-    const formValidator = new FormValidator(formConfig, '.popup__form-text-error');
     cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
     openPopup(cardPopup);
-    formValidator.resetErrorMessage();
+    profileFormValidator.resetErrorMessage();
 });
 
 //закрытие попапа карточки
@@ -122,3 +112,6 @@ cardPopupCloseButton.addEventListener('click', () => {
 imagePopupCloseButton.addEventListener('click', () => {
     closePopup(image);
 });
+
+cardFormValidator.enableValidation();
+profileFormValidator.enableValidation();

@@ -80,12 +80,11 @@ export default class FormValidator {
 
     //включаем валидацию формы.
     enableValidation = () => {
-    
+        
         this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
 
         this._setEventListeners();
     };
-
 };
