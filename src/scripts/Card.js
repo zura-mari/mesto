@@ -1,15 +1,9 @@
-import {openPopup} from '../scripts/utils.js';
-
-const image = document.querySelector('.popup_type_full-image');
-const imagePopup = document.querySelector('.popup__full-image');
-const imagePopupHeading = image.querySelector('.popup__full-image-heading');
-
-
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     generateCard = () => {
@@ -45,7 +39,7 @@ export default class Card {
         });
 
         this._cardImage.addEventListener('click', () => {
-            this._handlePreviewPicture();
+            this._handleCardClick(this._name, this._link);
         });
     }
 
@@ -56,11 +50,4 @@ export default class Card {
     _handleLikeButton = () => {
         this._cardLikeButton.classList.toggle('card__like_active');
     };
-
-    _handlePreviewPicture = () =>{
-        imagePopup.src = this._link;
-        imagePopup.alt = this._name;
-        imagePopupHeading.textContent = this._name;
-        openPopup(image);
-    }
 };
