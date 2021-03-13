@@ -1,9 +1,9 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import Section from './Section.js';
-import {initialCards} from './initial-сards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import {initialCards} from '../components/initial-сards.js';
 import {
     formConfig,
     editInfoButton,
@@ -20,8 +20,8 @@ import {
     profileForm,
     profileTitle,
     profileSubtitle
-} from './constants.js';
-import UserInfo from './UserInfo.js';
+} from '../components/constants.js';
+import UserInfo from '../components/UserInfo.js';
 import '../pages/index.css';
 
 const cardFormValidator = new FormValidator(formConfig, cardForm);
