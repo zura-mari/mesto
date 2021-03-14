@@ -50,6 +50,7 @@ function createCard(data) {
     }, '.card-template_type_default', handleCardClick);
 
     const cardElement = card.generateCard();
+    cardsList.addItem(cardElement);
 
     return cardElement
 };
@@ -57,11 +58,7 @@ function createCard(data) {
 const cardsList = new Section({
         items: initialCards,
         renderer: (item) => {
-            const card = new Card(item, '.card-template_type_default', handleCardClick);
-
-            const cardElement = card.generateCard();
-
-            cardsList.addItem(cardElement);
+            createCard(item)
         },
     },
     cardsListSection
