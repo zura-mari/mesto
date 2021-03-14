@@ -3,16 +3,13 @@ import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
-import {initialCards} from '../components/initial-сards.js';
+import {initialCards} from '../utils/initial-сards.js';
 import {
     formConfig,
     editInfoButton,
     profileFormSubmitButton,
-    profilePopup,
     addCardButton,
-    cardPopup,
-    cardListSection,
-    cardImage,
+    cardsListSection,
     cardFormSubmitButton,
     cardForm,
     nameInput,
@@ -20,12 +17,42 @@ import {
     profileForm,
     profileTitle,
     profileSubtitle
-} from '../components/constants.js';
+} from '../utils/constants.js';
 import UserInfo from '../components/UserInfo.js';
 import '../pages/index.css';
 
+
+ 
 const cardFormValidator = new FormValidator(formConfig, cardForm);
+
 const profileFormValidator = new FormValidator(formConfig, profileForm);
+
+const popupWithImage = new PopupWithImage('.popup_type_full-image');
+popupWithImage.setEventListeners();
+
+const userInfo = new UserInfo({
+    userName: profileTitle,
+    aboutUser: profileSubtitle
+});
+
+const popupWithUserForm = new PopupWithForm({
+    popupSelector: '.popup_type_edit-profile',
+    handleFormSubmit: (data) => {
+        userInfo.setUserInfo(data);
+        popupWithUserForm.close();
+    }
+});
+
+function createCard(data) {
+    const card = new Card({
+        name: data.name,
+        link: data.link
+    }, '.card-template_type_default', handleCardClick);
+
+    const cardElement = card.generateCard();
+
+    return cardElement
+};
 
 const cardsList = new Section({
         items: initialCards,
@@ -37,11 +64,13 @@ const cardsList = new Section({
             cardsList.addItem(cardElement);
         },
     },
-    cardListSection
+    cardsListSection
 );
 
+cardsList.renderItems()
+
 const popupWithCardForm = new PopupWithForm({
-    popupSelector: cardPopup,
+    popupSelector: '.popup_type_add-card',
     handleFormSubmit: (cardData) => {
         const createNewCard = new Card({
             name: cardData.name,
@@ -55,41 +84,26 @@ const popupWithCardForm = new PopupWithForm({
     }
 });
 
-const popupWithUserForm = new PopupWithForm({
-    popupSelector: profilePopup,
-    handleFormSubmit: (userData) => {
-        const userInfo = new UserInfo({
-            name: userData.name,
-            about: userData.about
-        }, profileTitle, profileSubtitle);
-        userInfo.setUserInfo();
-        popupWithUserForm.close();
-    }
-});
-
-//отрисовка карточек
-cardsList.renderItems();
-
 function handleCardClick(name, link) {
-    const cardImagePopup = new PopupWithImage(cardImage, name, link);
-    cardImagePopup.open();
+    popupWithImage.open(name, link);
 };
 
 //открытие попапа редактирование профиля
 editInfoButton.addEventListener('click', () => {
     profileFormSubmitButton.classList.remove(formConfig.inactiveButtonClass);
-    nameInput.value = profileTitle.textContent;
-    aboutInput.value = profileSubtitle.textContent;
-    popupWithUserForm.open()
-    cardFormValidator.resetErrorMessage();
+
+    const userData = userInfo.getUserInfo();
+    nameInput.value = userData.name;
+    aboutInput.value = userData.about;
+    popupWithUserForm.open(); 
 });
 
 //открытие попапа добавление карточки
 addCardButton.addEventListener('click', () => {
     cardFormSubmitButton.classList.add(formConfig.inactiveButtonClass);
     popupWithCardForm.open()
-    profileFormValidator.resetErrorMessage();
 });
+
 popupWithUserForm.setEventListeners();
 popupWithCardForm.setEventListeners();
 cardFormValidator.enableValidation();
