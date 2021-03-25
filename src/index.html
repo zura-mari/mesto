@@ -15,7 +15,10 @@
 
     <main class="content">
       <section class="profile">
-        <div class="profile__avatar"></div>
+        <div class="profile__avatar">
+          <button class="profile__avatar-edit-button" type="button"></button>
+
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button button-opacity" type="button"></button>
@@ -33,11 +36,29 @@
           <h2 class="popup__heading">Редактировать профиль</h2>
           <form class="popup__form popup__form_type_edit-profile-form" name="profileForm" novalidate>
             <fieldset class="popup__form-container">
-              <input class="popup__form-text popup__form-text_type_name" type="text" name="name" id="name-input" value="" minlength="2" maxlength="40" required>
+              <input class="popup__form-text popup__form-text_type_name" type="text" name="name" id="name-input"
+                value="" minlength="2" maxlength="40" required>
               <span class="popup__form-text-error" id="name-input-error"></span>
-              <input class="popup__form-text popup__form-text_type_about" type="text" name="about" id="about-input" value="" minlength="2" maxlength="200" required>
+              <input class="popup__form-text popup__form-text_type_about" type="text" name="about" id="about-input"
+                value="" minlength="2" maxlength="200" required>
               <span class="popup__form-text-error" id="about-input-error"></span>
-              <button class="popup__form-btn popup__form-btn_type_edit-profile button-opacity" type="submit">Сохранить</button>
+              <button class="popup__form-btn popup__form-btn_type_edit-profile button-opacity"
+                type="submit">Сохранить</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup popup_type_edit-avatar">
+        <div class="popup__container popup__container_type_edit-avatar">
+          <button class="popup__close-button button-opacity" type="button"></button>
+          <h2 class="popup__heading">Обновить аватар</h2>
+          <form class="popup__form popup__form_type_edit-avatar" name="avatarForm" novalidate>
+            <fieldset class="popup__form-container">
+              <input class="popup__form-text popup__form-text_type_link" placeholder="Ссылка на аватар" type="url"
+                name="link" id="avatar-url-input" value="" required>
+              <span class="popup__form-text-error" id="avatar-url-input-error"></span>
+              <button type="submit" class="popup__form-btn popup__form-btn_type_edit-avatar button-opacity">Сохранить</button>
             </fieldset>
           </form>
         </div>
@@ -45,7 +66,7 @@
 
       <section class="popup popup_type_add-card">
         <div class="popup__container popup__container_type_add-card">
-          <button class="popup__close-button popup__close-button_type_add-card button-opacity" type="button"></button>
+          <button class="popup__close-button button-opacity" type="button"></button>
           <h2 class="popup__heading">Новое место</h2>
           <form class="popup__form popup__form_type_add-card" name="cardForm" novalidate>
             <fieldset class="popup__form-container">
@@ -55,7 +76,20 @@
               <input class="popup__form-text popup__form-text_type_link" placeholder="Ссылка на картинку" type="url"
                 name="link" id="card-link-input" value="" required>
               <span class="popup__form-text-error" id="card-link-input-error"></span>
-              <button class="popup__form-btn popup__form-btn_type_add-card button-opacity" type="submit">Создать</button>
+              <button class="popup__form-btn popup__form-btn_type_add-card button-opacity"
+                type="submit">Создать</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup popup_type_delete-card">
+        <div class="popup__container popup__container_type_delete-card">
+          <button class="popup__close-button button-opacity" type="button"></button>
+          <h3 class="popup__heading">Вы уверены?</h3>
+          <form class="popup__form popup__form_type_delete-card" name="deleteCardForm" novalidate>
+            <fieldset class="popup__form-container">
+              <button class="popup__form-btn popup__form-btn_type_del-card button-opacity" type="submit">Да</button>
             </fieldset>
           </form>
         </div>
@@ -64,14 +98,14 @@
       <section class="popup popup_type_full-image">
         <div class="popup__container popup__container_type_full-image">
           <img class="popup__full-image" src="#" alt="картинка">
-          <button class="popup__close-button popup__close-button_type_full-image button-opacity" type="button"></button>
+          <button class="popup__close-button button-opacity" type="button"></button>
           <h3 class="popup__full-image-heading"></h3>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p class="footer__copyright">&copy; 2020 Mesto Georgia</p>
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
 
@@ -81,7 +115,10 @@
       <button class="card__delete button-opacity" type="button"></button>
       <div class="card__container">
         <h3 class="card__heading"></h3>
+        <div class="card__like-container">
         <button class="card__like button-opacity" type="button"></button>
+        <span class="card__like-count"></span>
+      </div>
       </div>
     </article>
   </template>

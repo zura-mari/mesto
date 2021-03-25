@@ -13,6 +13,12 @@ export const cardPopup = document.querySelector('.popup_type_add-card');
 export const cardForm = document.querySelector('.popup__form_type_add-card');
 export const cardFormSubmitButton = document.querySelector('.popup__form-btn_type_add-card');
 export const popupFullImage = document.querySelector('.popup_type_full-image');
+export const editProfileAvatar = document.querySelector('.profile__avatar-edit-button');
+export const avatarImage = document.querySelector('.profile__avatar');
+export const avatarForm = document.querySelector('.popup__form_type_edit-avatar');
+export const avatarFormSubmitButton = document.querySelector('.popup__form-btn_type_edit-avatar');
+export const baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-21/';
+export const token = '9da2e5f7-acdb-422d-9138-e514aeb3e40e';
 export const cardsListSection = '.cards';
 
 
