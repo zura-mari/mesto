@@ -1,6 +1,5 @@
 export const profile = document.querySelector('.profile');
 export const editInfoButton = document.querySelector('.profile__edit-button');
-export const popupSelector = document.querySelector('.popup');
 export const profileEditPopup = document.querySelector('.popup_type_edit-profile');
 export const profileForm = document.querySelector('.popup__form_type_edit-profile-form');
 export const profileFormSubmitButton = document.querySelector('.popup__form-btn_type_edit-profile');
@@ -20,6 +19,7 @@ export const avatarFormSubmitButton = document.querySelector('.popup__form-btn_t
 export const baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-21/';
 export const token = '9da2e5f7-acdb-422d-9138-e514aeb3e40e';
 export const cardsListSection = '.cards';
+export const ESC = 'Escape';
 
 
 
